@@ -7,13 +7,16 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     server: mode === "development" && {
       proxy: {
-        "/api": "http://localhost:5000", // Proxy chỉ sử dụng khi chạy local
+        // Proxy các API request trong quá trình phát triển
+        "/api": "http://localhost:5000", // Chuyển tiếp các yêu cầu API đến backend
       },
     },
     build: {
+      // Cấu hình thư mục output build
       outDir: "../dist", // Đảm bảo thư mục build nằm bên ngoài thư mục frontend
       rollupOptions: {
-        external: ["bootstrap"],
+        // Nếu bạn muốn loại trừ Bootstrap khỏi quá trình bundle (dùng CDN)
+        // external: ["bootstrap"],
       },
     },
   };
