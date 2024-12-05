@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: "../dist", // Đảm bảo thư mục build nằm bên ngoài thư mục frontend
       rollupOptions: {
-        external: ["bootstrap/dist/css/bootstrap.min.css"],
+        external: ["bootstrap"],
       },
     },
   };
