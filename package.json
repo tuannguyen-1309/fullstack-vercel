@@ -1,12 +1,9 @@
 {
   "name": "fullstack-vercel",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "dev": "vite",
+    "build": "cd frontend && npm run build",  
     "vercel-build": "npm run build"
   },
   "dependencies": {
@@ -16,7 +13,5 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.0.0",
     "vite": "^4.0.0"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }

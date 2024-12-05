@@ -2,11 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-    plugins: [react()],
-    server: {
-        proxy: {
-            "/api": "http://localhost:3000", // Proxy để gọi API khi chạy local
+export default defineConfig(({ mode }) => {
+    return {
+        plugins: [react()],
+        server: mode === "development" && {
+            proxy: {
+                "/api": "http://localhost:3000", // Proxy chỉ sử dụng khi chạy local
+            },
         },
-    },
+        build: {
+            outDir: "../dist", // Đảm bảo thư mục build nằm bên ngoài thư mục frontend
+        },
+    };
 });
