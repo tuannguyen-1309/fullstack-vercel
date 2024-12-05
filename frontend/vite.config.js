@@ -14,10 +14,9 @@ export default defineConfig(({ mode }) => {
     build: {
       // Cấu hình thư mục output build
       outDir: "../dist", // Đảm bảo thư mục build nằm bên ngoài thư mục frontend
-      rollupOptions: {
-        // Nếu bạn muốn loại trừ Bootstrap khỏi quá trình bundle (dùng CDN)
-        // external: ["bootstrap"],
-      },
+    },
+    define: {
+      'process.env.REACT_APP_API_URL': JSON.stringify(process.env.REACT_APP_API_URL || 'http://localhost:5000')
     },
   };
 });
