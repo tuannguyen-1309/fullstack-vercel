@@ -1,23 +1,32 @@
-import { useState, useEffect } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import List from "./components/List";
+import Add from "./components/Add";
+import Edit from "./components/Edit";
+// import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    // Gọi API từ backend
-    const fetchMessage = async () => {
-      const response = await fetch("/api/hello"); // Gọi API route
-      const data = await response.json();
-      setMessage(data.message);
-    };
-
-    fetchMessage();
-  }, []);
-
+  const routerConfig = createBrowserRouter([
+    {
+      path: "/",
+      element:<List/>,
+    },
+    {
+      path: "add",
+      element:<Add/>,
+    },
+    {
+      path: "edit/:_id",
+      element:<Edit/>,
+    },
+  ]);
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Frontend and Backend on Vercel</h1>
-      <p>{message}</p>
+    <div className="container">
+      <header className="alert alert-success">Header</header>
+      <RouterProvider router={routerConfig} />
+      <footer className="alert alert-success">Footer</footer>
     </div>
   );
 }

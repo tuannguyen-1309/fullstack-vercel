@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
         plugins: [react()],
         server: mode === "development" && {
             proxy: {
-                "/api": "http://localhost:3000", // Proxy chỉ sử dụng khi chạy local
+                "/api": "http://localhost:5000", // Proxy chỉ sử dụng khi chạy local
             },
         },
         build: {
